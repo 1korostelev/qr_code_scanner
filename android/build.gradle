@@ -26,7 +26,11 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdk 33
-
+    
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty("namespace")) {
+      namespace 'net.touchcapture.qr.flutterqr'
+    }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
